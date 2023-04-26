@@ -25,3 +25,24 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #fff;
+}
+
+.progress-bar {
+  height: 6px;
+  background: rgb(0,170,1);
+  background: linear-gradient(66deg, rgba(0,170,1,1) 0%, rgb(0, 78, 0) 100%);
+    transform-origin: 0%;
+}
+
+circle,
+rect,
+line {
+  stroke-width: 6px;
+  stroke-linecap: round;
+  fill: transparent;
+}
