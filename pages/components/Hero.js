@@ -12,7 +12,9 @@ import { motion } from "framer-motion";
 
 
 const Hero = () => {
-  const theme =  useContext(ThemeContext)
+  const theme =  useContext(ThemeContext);
+
+
 
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
@@ -22,39 +24,78 @@ const Hero = () => {
         pathLength: 1,
         opacity: 1,
         transition: {
-          pathLength: { delay, type: "spring", duration: 2, bounce: 0 },
+          pathLength: { delay, type: "spring", repeat: Infinity, repeatDelay: 10, duration: 2, bounce: 0 },
           opacity: { delay, duration: 1.01 }
         }
       };
     }
   };
 
+  const item1=  {
+    visible: i => ({
+            opacity: 1,
+            scale:1,
+            transition: {
+              pathLength: { i, type: "spring", duration: 7, bounce: 0 },
+              opacity: { i, duration: 3.01 }
+            }
+           
+        }),
+    hidden: { opacity: 0,  scale:1.5, },
+    
+    
+  }
+
+  const item2 =  {
+    visible: i => ({
+            opacity: 1,
+      
+            transition: {
+              delay: i * 0.3,
+            },
+           
+        }),
+    hidden: { opacity: 0 },
+    
+    
+  }
+
+  
+
     return(
     <div className={`flex flex-col items-center justify-center rounded-b-3xl  h-screen overflow-hidden text-gray-200 ${theme == 'light' ? 'hero-container-light' : 'hero-container-dark'}`} >
         <div className='flex flex-col md:flex-row items-center  container mx-auto justify-center md:gap-24 gap-14'>
-            <motion.div className=' md:w-2/5  w-full '
-              initial={{opacity: 0, scale: 2, x: "-100%" }}
-              animate={{ opacity: 1, scale: 1, x: "10%" }}
-              transition={{
-                duration: 0.8,
-                delay: 0.5,
-                ease: [0, 0.71, 0.2, 1.01]
-              }}
+            <div className=' md:w-2/5  w-full '
+             
             >
-              <h1 className={` md:text-4xl text-3xl md:leading-snug text-left `}>
+              <motion.h1
+                className={` md:text-5xl font-bold text-3xl md:leading-snug text-left `}
+                initial="hidden"
+                animate="visible"
+                variants={item1}
+                custom={1}
+                >
               We are empowering your digital vision with quality web solutions
-              </h1>
+              </motion.h1>
               <Link
               to='about'
               spy={true}
               smooth={true}
               offset={-70}
               duration={1000}
-              delay={100}
-              
-              ><button className='mt-12 border p-6 rounded-full hover:bg-white hover:text-gray-700 transition-all'>Learn more</button></Link>
+              delay={100}>
+
+                <motion.button
+                className='mt-12 border p-6 rounded-full hover:bg-white hover:text-gray-700 transition-all'
+                initial="hidden"
+                animate="visible"
+                variants={item2}
+                custom={2}
+                
+                >Learn more</motion.button>
+              </Link>
             
-            </motion.div>
+            </div>
             
             <motion.div className='md:w-3/5  w-full mx-auto'
                
@@ -68,74 +109,130 @@ const Hero = () => {
       animate="visible"
     >
   
+         
+        <motion.path 
+          variants={draw}
+          custom={1} d="M291.36,168.36l-27-12.1c-4.9-23.2-15.1-33.7-33.8-35.8a36.11,36.11,0,0,0-36.2,23.6c-6,15-3.3,31.5,8.4,40.8,11.5,9.1,27.2,15.9,48.6.5l27,12.1c-15.4,25.3-50.1,31.3-82.3,15.3a61.71,61.71,0,0,1-29.1-79.7c15.1-35.8,48.4-46.4,75.3-37.9C279.56,106.86,299.36,136.86,291.36,168.36Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={2} d="M540.56,389c18.1,22.9,20.1,59-9,86.8a64,64,0,0,1-87.8,1.2c-27.3-25.3-34.3-61-15.5-85.2l21.6,21.7c-7.1,26.3,5.3,39.1,18.4,46.8,13.2,7.9,30.2,4.4,42.5-6.9a37.34,37.34,0,0,0,9.5-43.7c-9-17.4-22.8-23.3-47.1-19.6l-21.6-21.7C479.16,349,515.46,357.06,540.56,389Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={3} d="M149.16,373l-28.7,11.6c-21.1-13.1-36.3-13-51.5-.4a37.86,37.86,0,0,0-8.4,44.4c7,15.4,21.4,25.3,36.8,23.2,15.2-2,31.7-9,35.6-36.2l28.7-11.6c7.9,29.9-12.7,60.4-48.1,73.1a64.56,64.56,0,0,1-81.2-35.8c-16-37.3.1-70,26-84.2C94.26,337.26,131.26,344.06,149.16,373Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={4} d="M455.56,116.66c16.8-9.1,40.4-6.4,55,15.5a41.8,41.8,0,0,1-9.1,56.8c-19.4,14.8-43.2,15.3-56.7.5l16.4-11.5c16.2,7.5,25.8.9,32.3-6.6,6.6-7.7,6.2-19,.3-28.2a24.43,24.43,0,0,0-27.2-11c-12.2,3.9-17.6,12.1-17.9,28.2l-16.4,11.5C422.86,151.86,432.16,129.26,455.56,116.66Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={5} d="M341.46,399.16l-19.3,10c-15.6-7.8-26.2-6.7-36,3a26.51,26.51,0,0,0-3,31.6c5.9,10.3,16.6,16.3,27.2,13.8s21.6-8.3,22.5-27.6l19.3-9.9c7.5,20.4-4.9,43-28.9,54.2a45.29,45.29,0,0,1-59-19.8c-13.6-25-4.5-48.9,12.7-60.5C300.76,377.76,327.06,380.06,341.46,399.16Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={6} d="M98.76,161.86l-19.3,10c-15.6-7.8-26.2-6.7-36,3a26.51,26.51,0,0,0-3,31.6c5.9,10.3,16.6,16.3,27.2,13.8s21.6-8.3,22.5-27.6l19.3-9.9c7.5,20.4-4.9,43-28.9,54.2a45.29,45.29,0,0,1-59-19.8c-13.6-25-4.5-48.9,12.7-60.5C58.06,140.46,84.36,142.86,98.76,161.86Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={7} d="M365.86,204.76a12,12,0,0,1-12.5-11.3v-.9a12.53,12.53,0,0,1,12.8-12.3,12,12,0,0,1,11.9,12v.2a11.36,11.36,0,0,1-10.3,12.4A11.48,11.48,0,0,1,365.86,204.76Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={8} d="M215.26,402.06a12,12,0,0,1-12.5-11.3v-.9a12.53,12.53,0,0,1,12.8-12.3,12,12,0,0,1,11.9,12v.2a11.36,11.36,0,0,1-10.3,12.4A11.48,11.48,0,0,1,215.26,402.06Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={9} d="M365.76,366.76a5.15,5.15,0,0,1-5.4-4.9v-.4a5.38,5.38,0,0,1,5.5-5.3,5.14,5.14,0,0,1,5.1,5.2v.1a4.92,4.92,0,0,1-4.4,5.4C366.36,366.76,366.06,366.86,365.76,366.76Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={10} d="M452.76,232.26a5.15,5.15,0,0,1-5.4-4.9V227a5.38,5.38,0,0,1,5.5-5.3,5.14,5.14,0,0,1,5.1,5.2v.1a4.93,4.93,0,0,1-4.4,5.4A2.2,2.2,0,0,0,452.76,232.26Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={11} d="M385.26,148a7.82,7.82,0,0,1-8.2-7.4V140a8.26,8.26,0,0,1,8.4-8.1,7.83,7.83,0,0,1,7.8,7.9v.1a7.51,7.51,0,0,1-6.8,8.2A4.87,4.87,0,0,0,385.26,148Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={12} d="M174.06,351.46a5.15,5.15,0,0,1-5.4-4.9v-.4a5.38,5.38,0,0,1,5.5-5.3,5.14,5.14,0,0,1,5.1,5.2v.1a4.93,4.93,0,0,1-4.4,5.4A2.2,2.2,0,0,0,174.06,351.46Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={13} d="M432.36,348.76a3.4,3.4,0,0,1-3.6-3.3v-.3a3.67,3.67,0,0,1,3.7-3.6,3.54,3.54,0,0,1,3.5,3.5v.1a3.34,3.34,0,0,1-3,3.6Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={14} d="M143.46,219.86a3.4,3.4,0,0,1-3.6-3.3v-.3a3.67,3.67,0,0,1,3.7-3.6,3.54,3.54,0,0,1,3.5,3.5v.1a3.34,3.34,0,0,1-3,3.6A.64.64,0,0,1,143.46,219.86Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={15} d="M337.76,131.76a3.4,3.4,0,0,1-3.6-3.3v-.3a3.67,3.67,0,0,1,3.7-3.6,3.54,3.54,0,0,1,3.5,3.5v.1a3.34,3.34,0,0,1-3,3.6Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={16} d="M311.46,227a5.15,5.15,0,0,1-5.4-4.9v-.4a5.38,5.38,0,0,1,5.5-5.3,5.14,5.14,0,0,1,5.1,5.2v.1a4.93,4.93,0,0,1-4.4,5.4A2.49,2.49,0,0,0,311.46,227Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={17} d="M87.66,300.76a5.15,5.15,0,0,1-5.4-4.9v-.4a5.38,5.38,0,0,1,5.5-5.3,5.14,5.14,0,0,1,5.1,5.2v.1a4.93,4.93,0,0,1-4.4,5.4A2.2,2.2,0,0,1,87.66,300.76Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={18} d="M32.36,307.86a12,12,0,0,1-12.5-11.3v-.9a12.53,12.53,0,0,1,12.8-12.3,12,12,0,0,1,11.9,12v.2A11.36,11.36,0,0,1,34.26,308,12.75,12.75,0,0,0,32.36,307.86Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={19} d="M537.16,237a10.25,10.25,0,0,1-10.7-9.7v-.8a10.71,10.71,0,0,1,10.9-10.5,10.09,10.09,0,0,1,10.1,10.2v.2a9.69,9.69,0,0,1-8.8,10.6A7.52,7.52,0,0,1,537.16,237Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+        <motion.path 
+          variants={draw}
+          custom={20} d="M571.16,321.76A13.53,13.53,0,0,1,557,309v-1.1a14.34,14.34,0,0,1,14.5-14,13.53,13.53,0,0,1,13.5,13.6v.2a13,13,0,0,1-11.7,14.1A14.7,14.7,0,0,1,571.16,321.76Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="2"/>
+
+
+        {/* c */}
+        <motion.path 
+          variants={draw}
+          custom={7} d="M202.76,275.46h-17.6c-8.3-11.4-16.4-14.6-27.1-11.2a21.51,21.51,0,0,0-13.9,21.7c.4,9.6,5.9,17.9,14.5,20.1,8.4,2.2,18.7,2,26.5-11.6h17.6c-2.2,17.5-19.6,29.2-41,28.3a36.66,36.66,0,0,1-35.2-36.2c-.5-23.1,15-37,31.7-38.9C181.36,244.86,199.46,256.36,202.76,275.46Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
+
+       
+        {/* 2nd e */}
+        <motion.path 
+          variants={draw}
+          custom={8} d="M267.16,298.16h-41.4a8.33,8.33,0,0,0,4.6,8.5,13.89,13.89,0,0,0,13.8.8c4.9-2.7,9.8-2.6,15-2.6h5.6c-3.1,13.2-18.4,21.1-34.6,17.3-17.1-4-23.2-18.1-21.7-31.5,1.9-17.2,15.9-27.4,34.1-25.2C255.66,267,268.36,277,267.16,298.16Zm-41.1-10H250a11.91,11.91,0,0,0-11.9-8.9,11.59,11.59,0,0,0-12,8.9Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
+
+         {/* y */}
+         <motion.path 
+          variants={draw}
+          custom={9} d="M275.26,266.66h14.3c.1,1.7.4,3.4.4,5.2.1,7.4-.1,14.8.1,22.2s2.5,10.9,7.8,12.6a10.42,10.42,0,0,0,13.3-6.2c0-.1.1-.2.1-.3a28.45,28.45,0,0,0,1.1-8.2c.1-8.3.1-16.6.1-25.2h15.7c.2,1.3.3,2.7.4,4.1,0,15.9.3,31.8-.1,47.7a41.2,41.2,0,0,1-3,13.9c-3.6,8.9-11.6,12.4-20.4,13-10.3.7-20.6.2-31.4.2a79,79,0,0,1,2.7-8.2,8.24,8.24,0,0,1,8.2-5.5h15.5c9.7-.1,13.7-5.4,11.7-15.4a44.3,44.3,0,0,1-8.5,4.8,20.89,20.89,0,0,1-22.9-7,20.39,20.39,0,0,1-5.5-13c-.3-10.9-.2-21.8-.2-32.7A3,3,0,0,1,275.26,266.66Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
+
+        {/* t */}
+        <motion.path 
+          variants={draw}
+          custom={10} d="M337.76,248.86h15.5v17.3h26.2v15.1h-25.6a81.08,81.08,0,0,0,.4,22,5.71,5.71,0,0,0,6.1,4.7,5.92,5.92,0,0,0,6.5-4.1,36.51,36.51,0,0,0,1.3-5h14.3a18.77,18.77,0,0,1-11.5,22.4,32.72,32.72,0,0,1-19.1.4,17.88,17.88,0,0,1-13.7-17.4c-.4-13.1-.3-26.3-.4-39.4Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
+
+        {/* i */}
+        <motion.path 
+          variants={draw}
+          custom={11} d="M390.66,266.56h14.5v54.5h-14C389.76,317.36,389.26,275.06,390.66,266.56Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
+
+        {/* i dot */}
+        <motion.path 
+          variants={draw}
+          custom={12} d="M396.86,259.16a8.29,8.29,0,0,1-8.7-7.9v-.7a8.79,8.79,0,0,1,8.9-8.6,8.37,8.37,0,0,1,8.3,8.4v.1a8,8,0,0,1-7.2,8.7Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
+
         
-        <motion.path variants={draw}
-        custom={1} d="M331.39,129.29l-27-12.1C299.44,94,289.32,83.54,270.53,81.4A36.2,36.2,0,0,0,234.3,105c-6,15-3.28,31.53,8.38,40.78,11.47,9.1,27.23,15.94,48.59.5l27,12.1c-15.38,25.3-50.06,31.28-82.28,15.28A61.78,61.78,0,0,1,206.88,94C222,58.16,255.27,47.57,282.19,56,319.61,67.75,339.41,97.75,331.39,129.29Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={2} d="M580.63,349.86c18.07,22.93,20.08,59-9,86.8a63.91,63.91,0,0,1-87.83,1.17c-27.34-25.28-34.31-61-15.49-85.21L490,374.28c-7.07,26.35,5.34,39.07,18.36,46.82,13.24,7.88,30.18,4.43,42.52-6.89a37.46,37.46,0,0,0,9.54-43.74c-9-17.39-22.77-23.34-47.07-19.57l-21.64-21.67C519.22,309.86,555.52,318,580.63,349.86Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={3} d="M189.22,333.9l-28.68,11.59c-21.08-13.11-36.25-13-51.47-.42a37.85,37.85,0,0,0-8.43,44.41c7,15.39,21.37,25.3,36.79,23.21,15.16-2.05,31.72-9,35.57-36.24l28.66-11.58c7.92,29.91-12.68,60.37-48.08,73.05a64.54,64.54,0,0,1-81.15-35.81c-16-37.29.11-70.05,26-84.2C134.33,298.21,171.27,305,189.22,333.9Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={4} d="M495.57,77.59c16.82-9.11,40.36-6.37,55,15.5a41.88,41.88,0,0,1-9.07,56.83c-19.37,14.82-43.22,15.32-56.73.47l16.4-11.54c16.21,7.51,25.82.92,32.27-6.62s6.23-19,.31-28.22a24.55,24.55,0,0,0-27.17-11c-12.22,3.85-17.61,12.08-17.89,28.19l-16.41,11.55C462.89,112.75,472.19,90.23,495.57,77.59Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={5} d="M381.5,360,362.21,370c-15.58-7.79-26.17-6.75-36,3.05a26.54,26.54,0,0,0-3,31.57c5.88,10.3,16.57,16.29,27.2,13.83,10.46-2.41,21.59-8.32,22.5-27.63l19.28-9.95c7.48,20.39-4.94,43-28.85,54.17a45.3,45.3,0,0,1-59-19.76c-13.63-25-4.47-48.95,12.68-60.52C340.83,338.66,367.08,341,381.5,360Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={6} d="M138.78,122.75l-19.28,10c-15.59-7.79-26.18-6.75-36,3a26.55,26.55,0,0,0-3,31.58c5.88,10.3,16.57,16.29,27.21,13.83,10.46-2.42,21.58-8.33,22.5-27.63l19.27-9.95c7.48,20.39-4.94,43-28.85,54.16a45.29,45.29,0,0,1-59-19.75C48,153,57.14,129,74.29,117.47,98.12,101.38,124.36,103.73,138.78,122.75Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={7} d="M406,165.72a12,12,0,0,1-12.52-11.35c0-.31,0-.63,0-.94a12.6,12.6,0,0,1,12.77-12.35,11.93,11.93,0,0,1,11.88,12v.18a11.42,11.42,0,0,1-10.32,12.43A10.82,10.82,0,0,1,406,165.72Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={8} d="M255.31,363a12,12,0,0,1-12.52-11.35c0-.31,0-.63,0-.94a12.6,12.6,0,0,1,12.77-12.35,11.93,11.93,0,0,1,11.88,12v.18A11.44,11.44,0,0,1,257.11,363,12,12,0,0,1,255.31,363Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={9} d="M405.85,327.72a5.15,5.15,0,0,1-5.4-4.89v-.41a5.43,5.43,0,0,1,5.5-5.32,5.15,5.15,0,0,1,5.12,5.17v.08a4.92,4.92,0,0,1-4.45,5.36A6.57,6.57,0,0,1,405.85,327.72Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={10} d="M492.82,193.17a5.15,5.15,0,0,1-5.4-4.88v-.41a5.43,5.43,0,0,1,5.5-5.32,5.15,5.15,0,0,1,5.12,5.17v.08a4.92,4.92,0,0,1-4.45,5.35A4,4,0,0,1,492.82,193.17Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={11} d="M425.34,108.88a7.84,7.84,0,0,1-8.21-7.44c0-.21,0-.41,0-.62a8.27,8.27,0,0,1,8.38-8.1,7.83,7.83,0,0,1,7.79,7.87v.12a7.51,7.51,0,0,1-6.77,8.16A7.75,7.75,0,0,1,425.34,108.88Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={12} d="M214.12,312.35a5.15,5.15,0,0,1-5.4-4.88v-.41a5.43,5.43,0,0,1,5.5-5.32,5.15,5.15,0,0,1,5.12,5.17V307a4.92,4.92,0,0,1-4.45,5.35A4,4,0,0,1,214.12,312.35Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={13} d="M472.37,309.7a3.46,3.46,0,0,1-3.64-3.3,2.62,2.62,0,0,1,0-.28,3.68,3.68,0,0,1,3.72-3.59A3.47,3.47,0,0,1,475.9,306v.05a3.33,3.33,0,0,1-3,3.62A3.13,3.13,0,0,1,472.37,309.7Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={14} d="M183.51,180.83a3.47,3.47,0,0,1-3.64-3.3,2.62,2.62,0,0,1,0-.28,3.67,3.67,0,0,1,3.72-3.59,3.47,3.47,0,0,1,3.46,3.49v0a3.33,3.33,0,0,1-3,3.62A3,3,0,0,1,183.51,180.83Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={15} d="M377.83,92.71a3.48,3.48,0,0,1-3.65-3.3v-.28a3.67,3.67,0,0,1,3.72-3.59A3.47,3.47,0,0,1,381.35,89v0a3.32,3.32,0,0,1-3,3.62A3,3,0,0,1,377.83,92.71Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={16} d="M351.46,187.86a5.15,5.15,0,0,1-5.4-4.89v-.4a5.43,5.43,0,0,1,5.5-5.32,5.14,5.14,0,0,1,5.12,5.17v.08a4.92,4.92,0,0,1-4.45,5.35A4,4,0,0,1,351.46,187.86Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={17} d="M127.71,261.73a5.14,5.14,0,0,1-5.39-4.89c0-.14,0-.27,0-.41a5.43,5.43,0,0,1,5.5-5.32,5.14,5.14,0,0,1,5.12,5.17v.08a4.92,4.92,0,0,1-4.44,5.36A6.77,6.77,0,0,1,127.71,261.73Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={18} d="M72.39,268.73a11.94,11.94,0,0,1-12.52-11.34c0-.32,0-.63,0-.95a12.61,12.61,0,0,1,12.77-12.35,12,12,0,0,1,11.88,12v.19a11.43,11.43,0,0,1-10.32,12.43A12,12,0,0,1,72.39,268.73Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={19} d="M577.22,197.9a10.19,10.19,0,0,1-10.68-9.68,7.3,7.3,0,0,1,0-.81,10.76,10.76,0,0,1,10.89-10.54,10.19,10.19,0,0,1,10.14,10.24v.16a9.75,9.75,0,0,1-8.81,10.61A8.69,8.69,0,0,1,577.22,197.9Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-        <motion.path variants={draw}
-        custom={20} d="M611.18,282.7A13.53,13.53,0,0,1,597,269.85c0-.36,0-.72,0-1.07a14.27,14.27,0,0,1,14.46-14,13.52,13.52,0,0,1,13.46,13.58c0,.07,0,.14,0,.21a12.93,12.93,0,0,1-11.68,14.08A13.9,13.9,0,0,1,611.18,282.7Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10"/>
-
-
-        <motion.path variants={draw}
-        custom={8} d="M216.25,235.55H198.63c-8.34-11.42-16.37-14.61-27.1-11.2A21.57,21.57,0,0,0,157.6,246c.41,9.63,5.89,17.93,14.48,20.11s18.68,2,26.52-11.55h17.62c-2.2,17.49-19.58,29.18-41,28.33A36.77,36.77,0,0,1,140,246.67c-.52-23.12,15-37,31.68-38.94C194.87,205,212.93,216.46,216.25,235.55Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
-
-        <motion.path variants={draw}
-        custom={9} d="M280.68,258.25h-41.4a8.38,8.38,0,0,0,4.61,8.55,13.8,13.8,0,0,0,13.79.82c4.89-2.72,9.82-2.59,14.95-2.6h5.57c-3.05,13.24-18.4,21.07-34.6,17.28-17.07-4-23.24-18.15-21.74-31.55,1.91-17.18,15.92-27.43,34.13-25.25C269.18,227.08,281.87,237.08,280.68,258.25Zm-41.12-10h23.88a11.93,11.93,0,0,0-11.93-8.93,11.79,11.79,0,0,0-12,8.94Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
-
-        <motion.path variants={draw}
-        custom={10} d="M288.73,226.79h14.4c.13,1.67.4,3.42.41,5.17,0,7.4-.1,14.8.07,22.2s2.5,10.86,7.81,12.6a10.37,10.37,0,0,0,13.28-6.22l.09-.28a29.23,29.23,0,0,0,1.13-8.16c.14-8.29.05-16.59.05-25.23h15.67a39.38,39.38,0,0,1,.4,4c0,15.92.26,31.83-.11,47.74a39.81,39.81,0,0,1-3,13.9c-3.63,8.86-11.59,12.41-20.39,13-10.27.69-20.62.16-31.4.16,1-3.08,1.62-5.75,2.7-8.23A8.28,8.28,0,0,1,298,292c5.17,0,10.36,0,15.54,0,9.66-.1,13.7-5.39,11.66-15.4a43.45,43.45,0,0,1-8.5,4.76,21,21,0,0,1-22.92-7,20.43,20.43,0,0,1-5.53-13c-.28-10.91-.18-21.82-.2-32.73A6.23,6.23,0,0,1,288.73,226.79Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
-
+      {/* v */}
+      <motion.path 
+          variants={draw}
+          custom={13} d="M453,266.56h16.7l-19.5,54.5h-20.4l-19.5-54.3h17.2l12,37.8,1.3.1C445.36,292.16,448.46,279.26,453,266.56Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
         
-        <motion.path variants={draw}
-        custom={11} d="M351.26,209h15.51v17.31H393v15.1H367.35a82.58,82.58,0,0,0,.4,22,5.78,5.78,0,0,0,6.05,4.72,6.07,6.07,0,0,0,6.54-4.1c.56-1.55.86-3.19,1.34-5h14.26a18.75,18.75,0,0,1-11.49,22.44,32.77,32.77,0,0,1-19.09.41,17.94,17.94,0,0,1-13.74-17.41c-.37-13.12-.28-26.26-.36-39.39C351.23,219.88,351.26,214.72,351.26,209Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
 
-        
-        <motion.path variants={draw}
-        custom={12} d="M404.13,226.72h14.51v54.46h-14C403.26,277.52,402.78,235.23,404.13,226.72Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
-
-        <motion.path variants={draw}
-        custom={13} d="M410.36,219.28a8.32,8.32,0,0,1-8.73-7.91c0-.22,0-.44,0-.66a8.81,8.81,0,0,1,8.91-8.62,8.33,8.33,0,0,1,8.29,8.37v.13a8,8,0,0,1-7.2,8.67A7.58,7.58,0,0,1,410.36,219.28Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
-
-        <motion.path variants={draw}
-        custom={14} d="M466.45,226.67h16.71l-19.49,54.49H443.24l-19.49-54.35H441l11.95,37.81,1.31.08C458.83,252.3,461.94,239.38,466.45,226.67Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
-
-        <motion.path variants={draw}
-        custom={15} d="M539.44,258.18h-40c0,5.26,2,8.7,6.84,9.68a20,20,0,0,0,11.77-.52A27.21,27.21,0,0,1,530.28,265h7.81c-4.13,15-19.39,20.84-35.34,17-17.71-4.24-23.27-19.64-20.68-33.62,3.36-18.31,19.25-25.44,35.46-22.64C533.31,228.52,542.39,242.12,539.44,258.18Zm-40.14-9.92h24a12.17,12.17,0,0,0-12-8.94,11.82,11.82,0,0,0-12,8.94Z" transform="translate(-54.53 -52.77)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
+        {/* last e */}
+        <motion.path 
+          variants={draw}
+          custom={14} d="M526,298.06H486c0,5.3,2,8.7,6.8,9.7a20.63,20.63,0,0,0,11.8-.5,27.51,27.51,0,0,1,12.3-2.3h7.8c-4.1,14.9-19.4,20.8-35.3,17-17.7-4.2-23.3-19.6-20.7-33.6,3.4-18.3,19.3-25.4,35.5-22.6C519.76,268.36,528.86,282,526,298.06Zm-40.2-9.9h24a12,12,0,0,0-12-8.9,11.73,11.73,0,0,0-12,8.9Z" transform="translate(-13.98 -91.39)" fill="none" stroke="#128e13" stroke-miterlimit="10" stroke-width="3"/>
 
         
         </motion.svg>
