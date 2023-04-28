@@ -37,6 +37,8 @@ input:checked ~ .dot {
   background: rgb(0,170,1);
   background: linear-gradient(66deg, rgba(0,170,1,1) 0%, rgb(0, 78, 0) 100%);
     transform-origin: 0%;
+
+  
 }
 
 circle,

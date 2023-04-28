@@ -1,5 +1,5 @@
 'use client'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -11,7 +11,7 @@ import { CiDark } from "react-icons/ci";
 import { useContext } from 'react';
 import { ThemeContext } from '../context';
 
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useWillChange } from "framer-motion";
 
 
 const navigation = [
@@ -35,14 +35,26 @@ export default function Navbar({changeTheme}) {
     restDelta: 0.001
   });
 
-  
+  const [scrollProgress, setScrollProgress] = useState(false)
 
+  const { scrollY } = useScroll() 
+
+  useEffect(() => {
+    scrollY.onChange(() => {
+      setScrollProgress(scrollY.current)
+    })
+  }, []);
+
+  
   return (
     <div className=" sticky top-0 z-50  "> 
     <Disclosure as="nav" >
       {({ open }) => (
         <>
-          <div className={`mx-auto  px-2 sm:px-6  lg:px-12 shadow-xl border-b-gray-500 border-b  ${theme== "light" ?  " bg-gray-50" : " bg-gray-800 "} `}>
+          <div
+            className={`mx-auto  px-2 sm:px-6 lg:px-12 shadow-xl transition-all  border-black border-b  ${theme== "light" ?  " bg-gray-50" : " bg-black "} ${scrollProgress > 100 ? 'border-b-gray-500  ' : null} `}
+           
+            >
             <div className="relative container mx-auto  flex h-16 px-12 items-center justify-between ">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -160,7 +172,12 @@ export default function Navbar({changeTheme}) {
         </>
       )}
     </Disclosure>
-    <motion.div className="progress-bar  bg-red-400" style={{ scaleX }} /> 
+    <motion.div
+    className="progress-bar"
+    whileHover={{ opacity: 0.1 }}
+    // will-change: auto until hover starts/ends
+    style={{ scaleX }}
+    /> 
 
     </div>
   )
