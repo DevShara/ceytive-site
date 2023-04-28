@@ -73,7 +73,7 @@ const Hero = () => {
                 initial="hidden"
                 animate="visible"
                 variants={item1}
-                custom={1}
+                custom={2}
                 >
               We are empowering your digital vision with quality web solutions
               </motion.h1>
@@ -90,7 +90,7 @@ const Hero = () => {
                 initial="hidden"
                 animate="visible"
                 variants={item2}
-                custom={2}
+                custom={4}
                 
                 >Learn more</motion.button>
               </Link>
