@@ -1,18 +1,60 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Navbar from './components/Navbar'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ThemeContext } from './context';
 import { useContext } from "react";
 import Hero from './components/Hero';
 import SmoothScroll from './components/SmoothScroll';
+import About from './components/About';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('gray');
 
+    useEffect(() => {
+      function setColorScheme(scheme) {
+        switch(scheme){
+          case 'dark':
+            setTheme('dark');
+            
+            break;
+          case 'light':
+            setTheme('light');
+            // Light
+            break;
+          default:
+            // Default
+            setTheme('gray');
+            break;
+        }
+      }
+      
+      function getPreferredColorScheme() {
+        if (window.matchMedia) {
+          if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+            return 'dark';
+          } else {
+            return 'light';
+          }
+        }
+        return 'gray';
+      }
+      
+      function updateColorScheme(){
+          setColorScheme(getPreferredColorScheme());
+      }
+      
+      if(window.matchMedia){
+        var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        colorSchemeQuery.addEventListener('change', updateColorScheme);
+      }
+      
+      updateColorScheme()
+
+    }, [])
 
 
   function changeTheme(){
@@ -27,7 +69,7 @@ export default function Home() {
       <Navbar changeTheme={changeTheme} />
       <SmoothScroll >
       <Hero />
-
+      <About />
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac rhoncus quam.
 
         Fringilla quam urna. Cras turpis elit, euismod eget ligula quis, imperdiet sagittis justo. In viverra fermentum ex ac vestibulum. Aliquam eleifend nunc a luctus porta. Mauris laoreet augue ut felis blandit, at iaculis odio ultrices. Nulla facilisi. Vestibulum cursus ipsum tellus, eu tincidunt neque tincidunt a.

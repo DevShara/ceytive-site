@@ -35,6 +35,7 @@ export default function Navbar({changeTheme}) {
     restDelta: 0.001
   });
 
+  //Determines whether the navbar bottom border need or not
   const [scrollProgress, setScrollProgress] = useState(false)
 
   const { scrollY } = useScroll() 
@@ -47,7 +48,7 @@ export default function Navbar({changeTheme}) {
 
   
   return (
-    <div className=" sticky top-0 z-50  "> 
+    <div className={ classNames("sticky top-0 z-50", `${theme == "light" ?  "bg-gray-50" : " bg-black "}  `) }> 
     <Disclosure as="nav" >
       {({ open }) => (
         <>
