@@ -7,13 +7,7 @@ import { useAnimate, useInView, motion } from "framer-motion"
 
 const About = () => {   
     const [scope, animate] = useAnimate()
-    const isInView = useInView(scope)
-    
-    useEffect(() => {
-       if (isInView) {
-         animate(scope.current, { opacity: 0.5 })
-       }
-    }, [isInView])
+
     
     const item =  {
         visible: i => ({
@@ -41,11 +35,7 @@ const About = () => {
         animate="visible"
         variants={item}
         custom={3}
-        whileHover={{
-            scale: 1.05,
-            transition: { duration: 0.25 },
-          }}
-          whileTap={{ scale: 0.9 }}
+      
         >
            <div className='flex   gap-24  items-center '>
                 <div className=' w-3/4'>
