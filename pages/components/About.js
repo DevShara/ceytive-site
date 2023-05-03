@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { RiLightbulbFlashLine } from "react-icons/ri";
 import { useAnimate, useInView, motion } from "framer-motion"
 
@@ -6,35 +6,43 @@ import { useAnimate, useInView, motion } from "framer-motion"
 
 
 const About = () => {   
-    const [scope, animate] = useAnimate()
 
-    
-    const item =  {
+    const container =  {
         visible: i => ({
                 opacity: 1,
-                style: {
-                    
-                },
-                
-          
+
                 transition: {
-                  delay: i * 0.35,
+                  delay:  0.35,
                   duration: 0.5,
-                  
-                },
-               
+                }, 
             }),
+
         hidden: { opacity: 0 },
-        
-        
       }
+
+      const item =  {
+        visible: i => ({
+                opacity: 1,
+
+                transition: {
+                  delay:  0.35,
+                  duration: 0.5,
+                }, 
+            }),
+
+        hidden: { opacity: 0 },
+      }
+
     return (
         <motion.div
         className='container mx-auto bg-gray-800  p-24 rounded-lg '
         initial="hidden"
-        animate="visible"
-        variants={item}
-        custom={3}
+        whileInView="visible"
+        variants={container}
+        custom={1}
+
+        
+        
       
         >
            <div className='flex   gap-24  items-center '>
@@ -42,18 +50,20 @@ const About = () => {
                     <motion.h1
                         className=' text-4xl  leading-snug font-bold mb-6 text-white'
                         initial="hidden"
-                        animate="visible"
+            
                         variants={item}
-                        custom={5}
-                        >Do you have a business idea in mind and don't know how to implement?
+                        whileInView="visible"
+                        custom={7}
+                        >Do you have a business idea in mind and dont know how to implement?
                     </motion.h1>
 
                     <motion.h1
                     className='text-4xl  leading-snug font-bold mb-6 text-gray-400'
                     initial="hidden"
-                        animate="visible"
+               
                         variants={item}
-                        custom={6}
+                        whileInView="visible"
+                        custom={9}
                     >we would love to hear from you and discuss how we can help turn your idea into a reality</motion.h1>
                 </div>
                 <div className='w-1/4  p-6 border   rounded-3xl'>
@@ -63,9 +73,9 @@ const About = () => {
             <motion.p 
                 className=' text-gray-400 mt-6 text-md text-justify'
                 initial="hidden"
-                animate="visible"
+                whileInView="visible"
                 variants={item}
-                custom={7}
+                custom={10}
             
                 >
             As a web development company, we pride ourselves on our ability to build websites of all types and sizes. Whether you need a simple landing page to promote your business or a powerful stack application to manage complex operations, we have the expertise and experience to deliver exactly what you need.For simple websites such as landing pages or single-page applications, we use lightweight frameworks such as Bootstrap or Foundation, combined with HTML, CSS, and JavaScript to create fast-loading and responsive pages. These websites are optimized for speed and performance, ensuring that your visitors have a smooth and enjoyable browsing experience.
