@@ -9,6 +9,7 @@ import Hero from './components/Hero';
 import SmoothScroll from './components/SmoothScroll';
 import About from './components/About';
 import TechSlider from './components/TechSlider';
+import Projects from './components/Projects';
 
 
 
@@ -73,8 +74,8 @@ export default function Home() {
       <SmoothScroll >
       <Hero />
       <About />
-       
-    <TechSlider />
+      <TechSlider />
+       <Projects />
     </SmoothScroll>
 
     </ThemeContext.Provider>

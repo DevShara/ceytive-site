@@ -38,7 +38,7 @@ input:checked ~ .dot {
 
 .progress-bar {
   height: 6px;
-  background: rgb(0,170,1);
+  background: hsl(120, 100%, 33%);
   background: linear-gradient(66deg, rgba(0,170,1,1) 0%, rgb(0, 78, 0) 100%);
     transform-origin: 0%;
   width: 100%;

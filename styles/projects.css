@@ -1,0 +1,19 @@
+.project-item{
+    background-image: url('https://nextui.org/images/card-example-6.jpeg');
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.tech-stack-item::marker {
+    content: '‣';
+  font-size: 1.5em;
+  margin: 0;
+
+
+  /* These styles may start working in the future */
+ 
+}
