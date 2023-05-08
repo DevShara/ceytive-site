@@ -44,7 +44,7 @@ export default function Navbar({changeTheme}) {
     scrollY.onChange(() => {
       setScrollProgress(scrollY.current)
     })
-  }, []);
+  }, [scrollY]);
 
   
   return (
