@@ -7,13 +7,16 @@
 }
 
 
+.tech-stack-list{
 
-.tech-stack-item::marker {
-    content: '‣';
-  font-size: 1.5em;
-  margin: 0;
+    display: flex;
 
 
-  /* These styles may start working in the future */
- 
+}
+.tech-stack-item{
+    margin-right: 10px;
+}
+.tech-stack-item::before{
+    content: '• ';
+    vertical-align:auto;
 }

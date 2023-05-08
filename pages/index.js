@@ -10,6 +10,7 @@ import SmoothScroll from './components/SmoothScroll';
 import About from './components/About';
 import TechSlider from './components/TechSlider';
 import Projects from './components/Projects';
+import Contact from './components/Contact';
 
 
 
@@ -76,6 +77,7 @@ export default function Home() {
       <About />
       <TechSlider />
        <Projects />
+       <Contact />
     </SmoothScroll>
 
     </ThemeContext.Provider>

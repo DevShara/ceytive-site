@@ -37,16 +37,18 @@ const TechSlider = () => {
         
       }
     return (
+      <div className='container mx-auto mt-24 '>
+                <h1 className='text-white text-2xl font-bold mb-9'>Technologies we are using</h1>
 
+   
        <motion.div
        
-       className='container mx-auto overflow-hidden mt-12 bg-black  border py-12  rounded-lg'
+       className='overflow-hidden  bg-black  border py-12  rounded-lg'
        initial="hidden"
        whileInView="visible"
        variants={container}
        custom={1}
        >
-        <h1 className='text-white text-2xl font-bold mx-24 mb-6'>Technologies we are using</h1>
          <Flickity
         className={'carousel  '} // default ''
         elementType={'div'} // default 'div'
@@ -143,6 +145,7 @@ const TechSlider = () => {
 
       </Flickity>
        </motion.div>
+       </div>
     );
 };
 
