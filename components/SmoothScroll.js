@@ -44,14 +44,14 @@ const SmoothScroll = ({ children }) => {
       <motion.div
         ref={scrollRef}
         style={{ y: spring }} // translateY of scroll container using negative scroll value
-        className="scroll-container"
+        className="scroll-container max-h-screen"
       >
         {children}
       </motion.div>
       {/* blank div that has a dynamic height based on the content's inherent height */}
       {/* this is neccessary to allow the scroll container to scroll... */}
       {/* ... using the browser's native scroll bar */}
-      {/* <div style={{ height: pageHeight }} /> */}
+      <div style={{ height: pageHeight }} />
     </>
   )
 }
