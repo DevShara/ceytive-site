@@ -54,6 +54,7 @@ const About = () => {
                         variants={item}
                         whileInView="visible"
                         custom={7}
+                        
                         >Do you have a business idea in mind and dont know how to implement?
                     </motion.h1>
 
@@ -76,6 +77,7 @@ const About = () => {
                 whileInView="visible"
                 variants={item}
                 custom={10}
+                id='about'
             
                 >
             As a web development company, we pride ourselves on our ability to build websites of all types and sizes. Whether you need a simple landing page to promote your business or a powerful stack application to manage complex operations, we have the expertise and experience to deliver exactly what you need.For simple websites such as landing pages or single-page applications, we use lightweight frameworks such as Bootstrap or Foundation, combined with HTML, CSS, and JavaScript to create fast-loading and responsive pages. These websites are optimized for speed and performance, ensuring that your visitors have a smooth and enjoyable browsing experience.

@@ -15,8 +15,8 @@ const Projects = () => {
         
       }
     return (
-        <div className='text-white container mx-auto mt-24'>
-           <h1 className='text-white text-2xl font-bold mb-9'>Projects We’ve Built</h1>
+        <div className='text-white container mx-auto mt-24' id='works'>
+           <h1 className='text-white text-2xl font-bold mb-9' >Projects We’ve Built</h1>
            <div className='grid grid-cols-4 mt-6 gap-12'>
                 <motion.div
                     className='rounded-xl relative project-item-1'
@@ -29,6 +29,7 @@ const Projects = () => {
                     whileInView="visible"
                     variants={item}
                     custom={0.25}
+                    
                 >
                     <div className='absolute left-6 top-6'>
                         <h3 className=''>Website</h3>

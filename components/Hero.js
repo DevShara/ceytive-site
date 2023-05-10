@@ -63,7 +63,7 @@ const Hero = () => {
   
 
     return(
-    <div className={`flex flex-col items-center justify-center rounded-b-3xl  h-screen overflow-hidden text-gray-200 ${theme == 'light' ? ' bg-white' : 'bg-black'}`} >
+    <div id='hero' className={`flex flex-col items-center justify-center rounded-b-3xl  h-screen overflow-hidden text-gray-200 ${theme == 'light' ? ' bg-white' : 'bg-black'}`} >
         <div className='flex flex-col md:flex-row items-center  container mx-auto justify-center md:gap-24 gap-14'>
             <div className=' md:w-2/5  w-full '
              
@@ -79,7 +79,7 @@ const Hero = () => {
               </motion.h1>
               <Link
               to='about'
-              spy={true}
+              spy={false}
               smooth={true}
               offset={-70}
               duration={1000}

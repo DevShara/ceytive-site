@@ -33,3 +33,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/assets/mock1.tif
+/assets/mock2.tif
+/assets/mock3.tif
+/assets/mock4.tif
