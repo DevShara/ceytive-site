@@ -13,6 +13,8 @@ import { ThemeContext } from '../context';
 
 import { motion, useScroll, useSpring, useWillChange } from "framer-motion";
 
+import * as Scroll from 'react-scroll';
+
 
 const navigation = [
   { name: 'About', href: 'about', current: false },
@@ -46,6 +48,8 @@ export default function Navbar({changeTheme}) {
     })
   }, [scrollY]);
 
+
+
   
   return (
     <div className={ classNames("sticky top-0 z-50", `${theme == "light" ?  "bg-gray-50" : " bg-black "}  `) }> 
@@ -71,12 +75,14 @@ export default function Navbar({changeTheme}) {
               <div className="flex flex-1 items-center justify-center sm:items-stretch  sm:justify-between">
                 <div className="flex flex-shrink-0 items-center">
                 <Link
-                to='about'
-                spy={true}
+                to='hero'
+                spy={false}
                 smooth={true}
                 offset={-70}
                 duration={1000}
                 delay={100}
+                isDynamic={true}
+
                 className={`font-bold text-xl cursor-pointer  ${theme == "light" ? ' text-gray-800' : 'text-gray-100'}`}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="125" viewBox="0 0 154.688 40.147" fill="#128e13">
                   <g transform="translate(-206.981 -81.926)">
@@ -93,11 +99,14 @@ export default function Navbar({changeTheme}) {
                       <Link
                         key={item.name}
                         to={item.href}
-                        spy={true}
+                        spy={false}
                         smooth={true}
-                        offset={-70}
+                        offset={-200}
                         duration={1000}
                         delay={100}
+                     
+                   
+
                         className={classNames(
                           theme == "light" ? ' text-gray-800' : 'text-gray-100',
                           item.current ? 'underline ' : 'over:underline   underline-offset-4 ',
@@ -114,7 +123,7 @@ export default function Navbar({changeTheme}) {
               </div>
              
 
-              <div className="flex items-center justify-center ml-6">
+              {/* <div className="flex items-center justify-center ml-6">
   
               <label htmlFor="toggleB" className="flex items-center cursor-pointer">
               
@@ -131,7 +140,7 @@ export default function Navbar({changeTheme}) {
              
               </label>
 
-            </div>
+            </div> */}
         
              
 

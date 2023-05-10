@@ -16,14 +16,14 @@ const Contact = () => {
         
       }
     return (
-        <div className='container mx-auto mt-24 '>
+        <div className='container mx-auto mt-24 ' id='contact'>
             <h1 className='text-white text-2xl font-bold mb-6'>Let&apos;s Build Something Great Together</h1>
             <motion.div
                 className='bg-gray-800 p-16 rounded-xl flex gap-12 '
-                 whileHover={{ scale: 1.05,  opacity:0.9 }}
+                 whileHover={{ opacity:0.9 }}
                     transition={{ type: "spring", stiffness: 100, damping: 25 }}
                     whileTap={{
-                        scale: 0.85,                     
+                        scale: 0.95,                     
                     }}
                     initial="hidden"
                     whileInView="visible"
