@@ -93,13 +93,14 @@ export default function Navbar({changeTheme}) {
                 </Link>
                 
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                <div className="hidden sm:ml-6 sm:block ">
+                  <div className="flex space-x-4  ">
                     {navigation.map((item) => (
                       <Link
+                      activeStyle={{borderBottom: '1px solid #fff'}}
                         key={item.name}
                         to={item.href}
-                        spy={false}
+                        spy={true}
                         smooth={true}
                         offset={-200}
                         duration={1000}
@@ -110,7 +111,7 @@ export default function Navbar({changeTheme}) {
                         className={classNames(
                           theme == "light" ? ' text-gray-800' : 'text-gray-100',
                           item.current ? 'underline ' : 'over:underline   underline-offset-4 ',
-                          'rounded-md px-3 py-2 text-md font-medium cursor-pointer'
+                          ' px-3 py-1 text-md font-medium cursor-pointer '
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
