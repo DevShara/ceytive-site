@@ -37,7 +37,7 @@ const TechSlider = () => {
         
       }
     return (
-      <div className='container mx-auto mt-24 '>
+      <div className='container mx-auto mt-24 px-12 '>
                 <h1 className='text-white text-2xl font-bold mb-9'>Technologies we are using</h1>
 
    
