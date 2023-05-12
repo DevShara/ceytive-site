@@ -16,10 +16,10 @@ const Contact = () => {
         
       }
     return (
-        <div className='container mx-auto mt-24 px-12 ' >
+        <div className='container mx-auto mt-24 px-8 ' >
             <h1 className='text-white text-2xl font-bold mb-6' id='contact'>Let&apos;s Build Something Great Together</h1>
             <motion.div
-                className='bg-gray-800 p-16 rounded-xl flex flex-col md:flex-row gap-12 '
+                className='bg-gray-800 p-16 rounded-xl flex flex-col md:flex-row gap-8 '
                  whileHover={{ opacity:0.9 }}
                     transition={{ type: "spring", stiffness: 100, damping: 25 }}
                     whileTap={{

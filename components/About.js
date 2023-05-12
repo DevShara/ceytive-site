@@ -35,7 +35,7 @@ const About = () => {
 
     return (
         <motion.div
-        className='container mx-auto bg-gray-800  md:p-24 p-12 rounded-lg '
+        className='container mx-auto bg-gray-800  md:p-24 p-8 rounded-lg '
         initial="hidden"
         whileInView="visible"
         variants={container}

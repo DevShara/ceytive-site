@@ -63,7 +63,7 @@ const Hero = () => {
   
 
     return(
-    <div id='hero' className={`flex flex-col items-center justify-center rounded-b-3xl  h-screen overflow-hidden p-12 md:p-0 text-gray-200 ${theme == 'light' ? ' bg-white' : 'bg-black'}`} >
+    <div id='hero' className={`flex flex-col items-center justify-center rounded-b-3xl  h-screen overflow-hidden p-8 md:p-0 text-gray-200 ${theme == 'light' ? ' bg-white' : 'bg-black'}`} >
         <div className='flex flex-col md:flex-row items-center  container mx-auto justify-center md:gap-12 gap-14'>
             <div className=' md:w-2/5  w-full '
              
@@ -102,12 +102,12 @@ const Hero = () => {
             >
               
               <motion.svg
-      width="550"
+
       height="450"
-      viewBox="0 0 600 450"
+      viewBox="0 0 550 450"
       initial="hidden"
       animate="visible"
-      className='mx-auto'
+      className='mx-auto w-full'
     >
   
          
