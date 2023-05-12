@@ -15,9 +15,9 @@ const Projects = () => {
         
       }
     return (
-        <div className='text-white container mx-auto mt-24' id='works'>
+        <div className='text-white container mx-auto mt-24 px-12' >
            <h1 className='text-white text-2xl font-bold mb-9' >Projects We’ve Built</h1>
-           <div className='grid grid-cols-4 mt-6 gap-12'>
+           <div className='grid grid-cols-1 md:grid-cols-4 mt-6 gap-12 ' id='works'>
                 <motion.div
                     className='rounded-xl relative project-item-1'
                     whileHover={{ scale: 1.05,  opacity:0.9 }}

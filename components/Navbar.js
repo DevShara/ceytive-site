@@ -60,7 +60,7 @@ export default function Navbar({changeTheme}) {
             className={`mx-auto  px-2 sm:px-6 lg:px-12 shadow-xl transition-all  border-black border-b  ${theme== "light" ?  " bg-gray-50" : " bg-black "} ${scrollProgress > 100 ? 'border-b-gray-500  ' : null} `}
            
             >
-            <div className="relative container mx-auto  flex h-16 px-12 items-center justify-between ">
+            <div className="relative container mx-auto  flex h-20  items-center justify-between ">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -93,13 +93,14 @@ export default function Navbar({changeTheme}) {
                 </Link>
                 
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                <div className="hidden sm:ml-6 sm:block ">
+                  <div className="flex space-x-6  ">
                     {navigation.map((item) => (
                       <Link
+                      activeStyle={{borderBottom: '1px solid #fff'}}
                         key={item.name}
                         to={item.href}
-                        spy={false}
+                        spy={true}
                         smooth={true}
                         offset={-200}
                         duration={1000}
@@ -110,7 +111,7 @@ export default function Navbar({changeTheme}) {
                         className={classNames(
                           theme == "light" ? ' text-gray-800' : 'text-gray-100',
                           item.current ? 'underline ' : 'over:underline   underline-offset-4 ',
-                          'rounded-md px-3 py-2 text-md font-medium cursor-pointer'
+                          ' px-3 py-1 text-md font-medium cursor-pointer '
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
@@ -164,9 +165,9 @@ export default function Navbar({changeTheme}) {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-900 hover:bg-gray-900 hover:text-white',
-                    theme == "light" ? ' text-gray-800' : 'text-gray-100',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    item.current ? 'bg-gray-900 text-white' : 'text-gray-100 hover:bg-gray-900 hover:text-white',
+                   
+                    'block rounded-md px-3 py-2 text-base font-medium text-gray-100'
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >

@@ -70,7 +70,7 @@ export default function Home() {
   return (
     <ThemeContext.Provider value={theme}>
       <Navbar changeTheme={changeTheme} />
-      <SmoothScroll >
+      {/* <SmoothScroll > */}
       <Hero />
           
           <About/>
@@ -82,7 +82,7 @@ export default function Home() {
      
           <Contact />
         
-    </SmoothScroll>
+    {/* </SmoothScroll> */}
 
     </ThemeContext.Provider>
   )

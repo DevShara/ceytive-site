@@ -35,23 +35,24 @@ const About = () => {
 
     return (
         <motion.div
-        className='container mx-auto bg-gray-800  p-24 rounded-lg '
+        className='container mx-auto bg-gray-800  md:p-24 p-12 rounded-lg '
         initial="hidden"
         whileInView="visible"
         variants={container}
         custom={1}
+        id='about'
 
         
         
       
         >
-           <div className='flex   gap-24  items-center '>
-                <div className=' w-3/4'>
+           <div className='flex md:flex-row flex-col  md:gap-24  items-center '>
+                <div className=' md:w-3/4'>
                     <motion.h1
-                        className=' text-4xl  leading-snug font-bold mb-6 text-white'
+                        className=' md:text-4xl text-3xl  leading-snug font-bold mb-6 text-white'
                         initial="hidden"
-            
-                        variants={item}
+
+            variants={item}
                         whileInView="visible"
                         custom={7}
                         
@@ -59,7 +60,7 @@ const About = () => {
                     </motion.h1>
 
                     <motion.h1
-                    className='text-4xl  leading-snug font-bold mb-6 text-gray-400'
+                    className='md:text-4xl text-3xl  leading-snug font-bold mb-6 text-gray-400'
                     initial="hidden"
                
                         variants={item}
@@ -67,8 +68,8 @@ const About = () => {
                         custom={9}
                     >we would love to hear from you and discuss how we can help turn your idea into a reality</motion.h1>
                 </div>
-                <div className='w-1/4  p-6 border   rounded-3xl'>
-                    <RiLightbulbFlashLine className='text-white  mx-auto'   style={{fontSize:'150px'}} />
+                <div className='md:w-1/4  p-6 border md:block hidden  rounded-3xl'>
+                    <RiLightbulbFlashLine className='text-white  mx-auto '   style={{fontSize:'150px'}} />
                 </div>
            </div>
             <motion.p 
@@ -77,7 +78,7 @@ const About = () => {
                 whileInView="visible"
                 variants={item}
                 custom={10}
-                id='about'
+                
             
                 >
             As a web development company, we pride ourselves on our ability to build websites of all types and sizes. Whether you need a simple landing page to promote your business or a powerful stack application to manage complex operations, we have the expertise and experience to deliver exactly what you need.For simple websites such as landing pages or single-page applications, we use lightweight frameworks such as Bootstrap or Foundation, combined with HTML, CSS, and JavaScript to create fast-loading and responsive pages. These websites are optimized for speed and performance, ensuring that your visitors have a smooth and enjoyable browsing experience.
