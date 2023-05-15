@@ -64,7 +64,7 @@ const Hero = () => {
 
     return(
     <div id='hero' className={`flex flex-col items-center justify-center rounded-b-3xl  h-screen overflow-hidden p-8 md:p-0 text-gray-200 ${theme == 'light' ? ' bg-white' : 'bg-black'}`} >
-        <div className='flex flex-col md:flex-row items-center  container mx-auto justify-center md:gap-12 gap-14'>
+        <div className='flex flex-col md:flex-row items-center  container mx-auto justify-center md:gap-12 '>
             <div className=' md:w-2/5  w-full '
              
             >
