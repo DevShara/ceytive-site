@@ -14,6 +14,15 @@ import Contact from '../components/Contact';
 
 const inter = Inter({ subsets: ['latin'] })
 
+import Head from 'next/head'
+
+
+
+// export const metadata = {
+//   title: 'Empowering your digital vision with quality web solutions',
+//   description: 'We are empowering your digital vision with quality web solutions, as a web development company in Sri Lanka, we pride ourselves on our ability to build websites of all types and sizes. '
+// }
+
 export default function Home() {
   const [theme, setTheme] = useState('gray');
 
@@ -69,6 +78,11 @@ export default function Home() {
   }
   return (
     <ThemeContext.Provider value={theme}>
+      <Head>
+        <title>Ceytive</title>
+        <meta name='description' content='We are empowering your digital vision with quality web solutions, as a web development company in Sri Lanka, we pride ourselves on our ability to build websites of all types and sizes.' />
+     </Head>
+
       <Navbar changeTheme={changeTheme} />
       {/* <SmoothScroll > */}
       <Hero />
